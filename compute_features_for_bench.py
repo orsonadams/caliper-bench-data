@@ -4,8 +4,8 @@
 # 	* [curl, tensorflow] is installed
 # 	* Modelset endpoint is reachable
 
-# TODO 
-# 	* Docstrings 
+# TODO
+# 	* Docstrings
 # 	* Improve type hints
 # 	* Use a better default for test features spec
 
@@ -55,7 +55,9 @@ def get_model_metadata(modelset_endpoint, show_stderr=False):
     return json.loads(o.decode("utf-8"))
 
 
-def compute_required_features(features_metadata: dict[str, any], features_to_remove: set) -> set:
+def compute_required_features(
+    features_metadata: dict[str, any], features_to_remove: set
+) -> set:
     feats = features_metadata["metadata"]["signature_def"]["signature_def"][
         "serving_feature_names"
     ]["outputs"]
@@ -109,19 +111,20 @@ def parse_test_feature_spec(spec):
             )
     maybe_remove = spec["remove"]
     if not isinstance(maybe_remove, Iterable):
-    	raise TypeError(
-			f"Invalid test feature spec. {maybe_remove} is not an Iterable but should be"
-		)
+        raise TypeError(
+            f"Invalid test feature spec. {maybe_remove} is not an Iterable but should be"
+        )
     return spec
 
 
 def main(args):
-    
     test_features = load_test_feature_spec(args.test_feature_spec_file)
     test_features_parsed = parse_test_feature_spec(test_features)
     required_features_metadata = get_model_metadata(args.modelset_endpoint)
     features_to_remove = set(test_features["remove"])
-    required_features = compute_required_features(required_features_metadata, features_to_remove)
+    required_features = compute_required_features(
+        required_features_metadata, features_to_remove
+    )
     updated_examples = read_and_update_examples(
         args.record_input_file, required_features, test_features_parsed["enrich"]
     )
