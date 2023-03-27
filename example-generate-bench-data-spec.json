@@ -1,0 +1,8 @@
+{
+	"enrich":
+		{
+			"candidateInfo.scores.score" : [0.1, "float"]
+		},
+	"remove": ["requestUUID"]
+
+}
