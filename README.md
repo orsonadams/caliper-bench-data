@@ -7,7 +7,8 @@ Its invoked as follows:
 ```bash
 
 python compute_features_for_bench.py 
---modelset-endpoint https://prod-ml-platform.etsycloud.com/barista/nr-third-pass-si/v1/models/nr-third-pass-si/metadata \
+--modelset-endpoint \
+  https://prod-ml-platform.etsycloud.com/barista/nr-third-pass-si/v1/models/nr-third-pass-si/metadata \
 --record-input-file part-08996-45b5f53d-5dd4-4f05-8460-72b69d51798a-c000.tfrecord \
 --record-output-file test-ouput.record \
 --test-feature-spec test_feature_spec_lwr_bench.json
