@@ -22,7 +22,7 @@ args:
 
 * --record-output-file: where should the script write the updated tfrecord.
 
-* --test-feature-spec: `[OPTIONAL]` a json file that looks like below. Contains `remove` key of type `list[str]` which captures a list of feature names to remove. An "enrich" key which captures features that are not in the raw file that you'd like to include in updated tfrecord. The type of this key is `dict[str, (value, type)]`; Where `type` only python types `str`, `int`, `float` supported.
+* --test-feature-spec: `[OPTIONAL]` a json file that looks like below. Contains `remove` key of type `list[str]` which captures a list of feature names to remove. An "enrich" key which captures features that are not in the raw file that you'd like to include in updated tfrecord. The type of this key is `dict[str, (value, type)]`; where `type` only python types `str`, `int`, `float` supported.
 
 ```json
 {
